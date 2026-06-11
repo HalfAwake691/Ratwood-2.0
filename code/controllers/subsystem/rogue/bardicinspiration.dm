@@ -60,6 +60,8 @@ GLOBAL_LIST_INIT(learnable_songst3, (list(/obj/effect/proc_holder/spell/invoked/
 /datum/inspiration/proc/grant_inspiration(mob/living/carbon/human/H, bard_tier)
 	if(!H || !H.mind)
 		return
+	if(H.inspiration.level >= bard_tier)
+		return
 	level = bard_tier
 	maxaudience = 2*bard_tier
 	maxsongs = bard_tier

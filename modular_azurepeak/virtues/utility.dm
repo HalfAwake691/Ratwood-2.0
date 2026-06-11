@@ -203,6 +203,11 @@
 		var/instrument_type = instruments[chosen_name]
 		recipient.mind?.special_items[chosen_name] = instrument_type
 
+/datum/virtue/utility/performer/apply_to_human(mob/living/carbon/human/recipient)
+	if (!HAS_TRAIT(recipient, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(recipient, TRAIT_HEAVYARMOR) && !HAS_TRAIT(recipient, TRAIT_DODGEEXPERT) && !HAS_TRAIT(recipient, TRAIT_CRITICAL_RESISTANCE))
+		var/datum/inspiration/songs = new() 
+		songs.grant_inspiration(recipient, BARD_T1)
+
 /datum/virtue/utility/mean
 	name = "Acquired Tastes"
 	desc = "Despite your unorthodox tastes, you know how to keep a partner off-guard and on their back. Sometimes accidents happen in the heat of passion or you enjoy making them, sharing a bed with you is a gamble. You're always prepared to handle a guest with the toys you keep stashed."
